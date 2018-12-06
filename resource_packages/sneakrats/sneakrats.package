@@ -1,0 +1,11 @@
+mod = [
+	"sneakrats"
+]
+
+package = [
+	"resource_packages/sneakrats/sneakrats"
+]
+
+lua = [
+	"scripts/mods/sneakrats/*"
+]
