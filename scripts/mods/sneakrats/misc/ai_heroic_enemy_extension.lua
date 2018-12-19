@@ -2,51 +2,10 @@ AiHeroicEnemyExtension = class(AiHeroicEnemyExtension)
 
 AiHeroicEnemyExtension.init = function (self, context, unit, extension_init_data)
 	self._unit = unit
-	local archetype_index = extension_init_data and extension_init_data.archetype_index
-
-	if archetype_index then
-		self._archetype_index = archetype_index
-		local archetype = extension_init_data.breed.heroic_archetypes[archetype_index]
-		local archetype_name = archetype.name
-		self._archetype_name = archetype_name
-		self._archetype = archetype
-
-		self[archetype_name](self, unit, archetype)
-	else
-		self._archetype_index = 0
-	end
-
 	self._is_server = Managers.player.is_server
-end
-
-AiHeroicEnemyExtension.extensions_ready = function (self)
-	local archetype = self._archetype
-
-	if archetype and self._is_server then
-		local blackboard = Unit.get_data(self._unit, "blackboard")
-
-		table.merge_recursive(blackboard, archetype.blackboard)
-	end
-end
-
-AiHeroicEnemyExtension.archetype_index = function (self)
-	return self._archetype_index
-end
-
-AiHeroicEnemyExtension.archetype_name = function (self)
-	return self._archetype_name
-end
-
-AiHeroicEnemyExtension.archetype_data = function (self)
-	return self._archetype
-end
-
-AiHeroicEnemyExtension.destroy = function (self, unit)
-	local archetype_name = self._archetype_name
-
-	if archetype_name then
-		self[archetype_name .. "_destroyed"](self, unit)
-	end
+	EntitySystem:_add_system("ai_heroic_enemy_system", ExtensionSystemBase, entity_system_creation_context, {
+		"AiHeroicEnemyExtension"
+	})
 end
 
 AiHeroicEnemyExtension.decoy = function (self, unit)
@@ -59,7 +18,7 @@ AiHeroicEnemyExtension.decoy = function (self, unit)
 end
 
 AiHeroicEnemyExtension._spawn_decoys = function (self, unit)
-	local breed = Breeds[self._archetype.breed_name]
+	local breed = Breeds.skaven_gutter_runner_decoy.breed_name
 
 	for i = 1, self._num_decoys, 1 do
 		local unit = Managers.state.conflict:spawn_unit(breed, Unit.local_position(unit, 0), Quaternion(Vector3.up(), 0), "specials_pacing", nil, nil, nil, nil, nil)
@@ -113,9 +72,5 @@ end
 AiHeroicEnemyExtension.bomb_destroyed = function (self, unit)
 	return
 end
-
-EntitySystem._add_system("ai_heroic_enemy_system", ExtensionSystemBase, entity_system_creation_context, {
-	"AiHeroicEnemyExtension"
-})
 
 return

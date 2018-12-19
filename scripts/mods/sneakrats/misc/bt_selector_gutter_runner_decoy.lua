@@ -1,6 +1,7 @@
 require("scripts/entity_system/systems/behaviour/nodes/bt_node")
 
 local unit_alive = Unit.alive
+local Profiler = Profiler
 
 local function nop()
 	return
