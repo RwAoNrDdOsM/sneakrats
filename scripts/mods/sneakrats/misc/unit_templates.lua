@@ -1,19 +1,18 @@
 local mod = get_mod("sneakrats")
-
+local ai_locomotion_name = (_G.GameSettingsDevelopment and GameSettingsDevelopment.use_engine_optimized_ai_locomotion and "AILocomotionExtensionC") or "AILocomotionExtension"
+local eye_tracking_name = (PLATFORM == "win32" and "PlayerEyeTrackingExtension") or nil
 unit_templates.ai_unit_gutter_runner = {
 	base_template = "ai_unit_base",
-	go_type = "ai_unit_gutter_runner",
+	go_type = "ai_unit_with_inventory",
 	self_owned_extensions = {
 		"AiHeroicEnemyExtension",
 		"AIInventoryExtension",
-		"PingTargetExtension",
-		"EnemyOutlineExtension"
+		"PingTargetExtension"
 	},
 	husk_extensions = {
-		"AiHeroicEnemyExtension",
 		"AIInventoryExtension",
-		"PingTargetExtension",
-		"EnemyOutlineExtension"
+		"AiHeroicEnemyExtension",
+		"PingTargetExtension"
 	}
 }
 

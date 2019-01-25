@@ -3,9 +3,6 @@ AiHeroicEnemyExtension = class(AiHeroicEnemyExtension)
 AiHeroicEnemyExtension.init = function (self, context, unit, extension_init_data)
 	self._unit = unit
 	self._is_server = Managers.player.is_server
-	EntitySystem:_add_system("ai_heroic_enemy_system", ExtensionSystemBase, entity_system_creation_context, {
-		"AiHeroicEnemyExtension"
-	})
 end
 
 AiHeroicEnemyExtension.decoy = function (self, unit)

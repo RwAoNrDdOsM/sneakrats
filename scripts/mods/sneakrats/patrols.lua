@@ -1,146 +1,822 @@
 local mod = get_mod("sneakrats")
 
+--[[mod:dofile("scripts/settings/difficulty_settings")
+
+local EMPTY = ""
+PatrolFormationSettings = PatrolFormationSettings or {}]]
+
+
 PatrolFormationSettings.default_sneaking_settings = {
 	sounds = {
 		PLAYER_SPOTTED = "enemy_gutterrunner_stinger",
-		FORMING = "",
-		FOLEY = "",
-		FORMATED = "",
-		FORMATE = "",
+		FORMING = "horde_stinger_skaven_gutter_runner",
+		FOLEY = "horde_stinger_skaven_gutter_runner",
+		FORMATED = "horde_stinger_skaven_gutter_runner",
+		FORMATE = "horde_stinger_skaven_gutter_runner",
 		CHARGE = "horde_stinger_skaven_gutter_runner",
-		VOICE = "enemy_gutterrunner_stinger"
+		VOICE = "horde_stinger_skaven_gutter_runner"
 	},
-	offsets = PatrolFormationSettings.default_settings.offsets,
+	offsets = {
+		ANCHOR_OFFSET = {
+			x = 1.4,
+			y = 0.6
+		}
+	},
 	speeds = {
 		FAST_WALK_SPEED = 2.6,
 		MEDIUM_WALK_SPEED = 2.35,
 		WALK_SPEED = 2.12,
 		SPLINE_SPEED = 2.22,
 		SLOW_SPLINE_SPEED = 0.1
-	}
+	},
 }
 PatrolFormationSettings.chaos_warrior_default = {
 	settings = PatrolFormationSettings.default_sneaking_settings,
 	normal = {
 		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"critter_rat"
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"critter_rat"
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
 			"skaven_gutter_runner"
 		},
 		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		}
 	},
 	hard = {
 		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
 			"skaven_gutter_runner"
 		},
 		{
-			"critter_rat",
-			"critter_rat"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
 			"skaven_slave",
 			"skaven_slave"
 		},
 		{
-			"critter_rat",
-			"critter_rat"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
 			"skaven_gutter_runner"
 		},
 		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		}
 	},
 	harder = {
 		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
 			"chaos_raider",
 			"chaos_raider"
 		},
 		{
-			"critter_rat",
-			"critter_rat"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
 			"skaven_gutter_runner",
 			"skaven_gutter_runner"
 		},
 		{
-			"critter_rat",
-			"critter_rat"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
 			"skaven_gutter_runner",
 			"skaven_gutter_runner"
 		},
 		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		}
 	},
 	hardest = {
 		{
-			"critter_pig"
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"critter_rat",
-			"critter_rat"
-		},
-		{
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
-		},
-		{
-			"critter_rat",
-			"critter_rat"
-		},
-		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
 			"skaven_gutter_runner",
 			"skaven_gutter_runner"
 		},
 		{
-			"critter_rat",
-			"critter_rat"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
 			"skaven_gutter_runner",
 			"skaven_gutter_runner"
 		},
 		{
-			"critter_rat",
-			"critter_rat"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	}
+}
+PatrolFormationSettings.storm_vermin_two_column = {
+	settings = PatrolFormationSettings.default_sneaking_settings,
+	normal = {
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	}
+}
+PatrolFormationSettings.storm_vermin_shields_infront = {
+	settings = PatrolFormationSettings.default_sneaking_settings,
+	normal = {
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			EMPTY,
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			EMPTY
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner_decoy"
+		}
+	}
+}
+PatrolFormationSettings.offset = {
+	settings = PatrolFormationSettings.default_sneaking_settings,
+	normal = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy"
+		}
+	}
+}
+PatrolFormationSettings.single = {
+	settings = PatrolFormationSettings.default_sneaking_settings,
+	normal = {
+		{
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner_decoy"
+		}
+	}
+}
+PatrolFormationSettings.one_chaos_troll = {
+	normal = {
+		{
+			"chaos_troll"
+		}
+	},
+	hard = {
+		{
+			"chaos_troll"
+		}
+	},
+	harder = {
+		{
+			"chaos_troll"
+		}
+	},
+	hardest = {
+		{
+			"chaos_troll"
+		}
+	}
+}
+PatrolFormationSettings.escorted_troll = {
+	settings = PatrolFormationSettings.default_sneaking_settings,
+	normal = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"chaos_marauder",
+			EMPTY,
+			"chaos_troll",
+			EMPTY,
+			"chaos_marauder"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"chaos_marauder"
+		},
+		{
+			"chaos_marauder",
+			EMPTY,
+			"chaos_troll",
+			EMPTY,
+			"chaos_marauder"
+		},
+		{
+			"chaos_marauder",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			EMPTY,
+			"chaos_troll",
+			EMPTY,
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			EMPTY,
+			"chaos_troll",
+			EMPTY,
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			EMPTY,
+			"chaos_troll",
+			EMPTY,
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	}
+}
+PatrolFormationSettings.escorted_rat_ogre = {
+	settings = PatrolFormationSettings.default_sneaking_settings,
+	normal = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_rat_ogre"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			EMPTY,
+			"skaven_rat_ogre",
+			EMPTY,
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			EMPTY,
+			"skaven_rat_ogre",
+			EMPTY,
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			EMPTY,
+			"skaven_gutter_runner",
+			EMPTY,
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			EMPTY,
+			"skaven_rat_ogre",
+			EMPTY,
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			EMPTY,
+			EMPTY,
+			EMPTY,
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	}
+}
+PatrolFormationSettings.broad_line = {
+	settings = PatrolFormationSettings.default_sneaking_settings,
+	normal = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
 		}
 	}
 }
@@ -173,27 +849,143 @@ PatrolFormationSettings.chaos_warrior = {
 		}
 	}
 }
-PatrolFormationSettings.chaos_warrior_small = {
+PatrolFormationSettings.chaos_marauders = {
 	settings = PatrolFormationSettings.default_sneaking_settings,
 	normal = {
-		{
-			"critter_pig",
-			"critter_pig"
-		},
-		{
-			"critter_rat",
-			"critter_rat"
-		},
 		{
 			"skaven_gutter_runner"
 		},
 		{
-			"critter_rat",
-			"critter_rat"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+}
+PatrolFormationSettings.one_marauder = {
+	settings = PatrolFormationSettings.default_sneaking_settings,
+	normal = {
+		{
+			"skaven_gutter_runner"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner"
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner"
+		}
+	}
+}
+PatrolFormationSettings.small_stormvermins = {
+	settings = PatrolFormationSettings.default_sneaking_settings,rmal = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
 		}
 	},
 	hard = {
@@ -202,19 +994,14 @@ PatrolFormationSettings.chaos_warrior_small = {
 			"skaven_gutter_runner"
 		},
 		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"skaven_clan_rat_with_shield"
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"critter_pig",
-			"critter_pig"
-		},
-		{
-			"critter_rat",
-			"critter_rat"
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
 		}
 	},
 	harder = {
@@ -223,15 +1010,238 @@ PatrolFormationSettings.chaos_warrior_small = {
 			"skaven_gutter_runner"
 		},
 		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"critter_rat"
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		}
+	}
+}
+PatrolFormationSettings.small_stormvermins_long = {
+	settings = PatrolFormationSettings.default_sneaking_settings,
+	normal = {
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner"
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner"
+		}
+	}
+}
+PatrolFormationSettings.medium_stormvermins = {
+	settings = PatrolFormationSettings.default_sneaking_settings,
+	normal = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
 			"skaven_gutter_runner",
@@ -248,7 +1258,16 @@ PatrolFormationSettings.chaos_warrior_small = {
 			"skaven_gutter_runner"
 		},
 		{
-			"chaos_warrior"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
 			"skaven_gutter_runner",
@@ -260,287 +1279,168 @@ PatrolFormationSettings.chaos_warrior_small = {
 		}
 	}
 }
-PatrolFormationSettings.chaos_warrior_long = {
+PatrolFormationSettings.medium_stormvermins_wide = {
 	settings = PatrolFormationSettings.default_sneaking_settings,
 	normal = {
 		{
-			"critter_rat",
-			"critter_rat"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"critter_rat",
-			"critter_pig"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
 			"skaven_gutter_runner"
 		},
 		{
-			"skaven_gutter_runner"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"critter_pig",
-			"critter_pig"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"critter_pig",
-			"critter_rat"
-		},
-		{
-			"critter_rat",
-			"critter_rat"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		}
 	},
 	hard = {
 		{
-			"critter_rat",
-			"critter_rat"
-		},
-		{
-			"critter_pig",
-			"critter_pig"
-		},
-		{
 			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
 			"skaven_gutter_runner"
 		},
 		{
-			"skaven_gutter_runner"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
-			"skaven_gutter_runner"
-		},
-		{
-			"critter_pig",
-			"critter_pig"
-		},
-		{
-			"critter_pig",
-			"critter_pig"
-		},
-		{
-			"critter_rat",
-			"critter_rat"
-		}
-	},
-	harder = {
-		{
-			"critter_rat",
-			"critter_rat"
-		},
-		{
-			"critter_pig",
-			"critter_pig"
-		},
-		{
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
-		},
-		{
-			"skaven_gutter_runner"
-		},
-		{
-			"skaven_gutter_runner"
-		},
-		{
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
-		},
-		{
-			"critter_pig",
-			"critter_pig"
-		},
-		{
-			"critter_rat",
-			"critter_rat"
-		}
-	},
-	hardest = {
-		{
-			"critter_rat",
-			"critter_rat"
-		},
-		{
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
-		},
-		{
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
-		},
-		{
-			"skaven_gutter_runner"
-		},
-		{
-			"skaven_gutter_runner"
-		},
-		{
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
-		},
-		{
-			"critter_pig",
-			"critter_pig"
-		},
-		{
-			"critter_pig",
-			"critter_pig"
-		}
-	}
-}
-PatrolFormationSettings.chaos_warrior_wide = {
-	settings = PatrolFormationSettings.default_sneaking_settings,
-	normal = {
-		{
-			"critter_rat",
-			"critter_rat",
-			"critter_rat"
-		},
-		{
-			"critter_pig",
-			"critter_pig",
-			"critter_pig",
-			"critter_pig"
-		},
-		{
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
-		},
-		{
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
-		},
-		{
-			"critter_pig",
-			"critter_pig",
-			"critter_pig",
-			"critter_pig"
-		},
-		{
-			"critter_rat",
-			"critter_rat",
-			"critter_rat"
-		}
-	},
-	hard = {
-		{
-			"critter_rat",
-			"critter_rat",
-			"critter_rat"
-		},
-		{
-			"critter_pig",
-			"critter_pig",
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
-		},
-		{
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
-		},
-		{
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
-		},
-		{
-			"critter_pig",
-			"critter_pig",
-			"critter_pig",
-			"critter_pig"
-		},
-		{
-			"critter_rat",
-			"critter_rat",
-			"critter_rat"
-		}
-	},
-	harder = {
-		{
-			"critter_rat",
-			"critter_rat",
-			"critter_rat"
-		},
-		{
-			"critter_pig",
-			"critter_pig",
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
-		},
-		{
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
-		},
-		{
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
 			"skaven_gutter_runner",
 			"skaven_gutter_runner",
-			"critter_pig",
-			"critter_pig"
-		},
-		{
-			"critter_pig",
-			"critter_pig",
-			"critter_pig"
-		}
-	},
-	hardest = {
-		{
-			"critter_rat",
-			"critter_rat",
-			"critter_rat"
-		},
-		{
-			"critter_pig",
-			"critter_pig",
-			"skaven_gutter_runner",
 			"skaven_gutter_runner"
 		},
 		{
-			"skaven_gutter_runner",
-			"skaven_gutter_runner"
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		},
 		{
 			"skaven_gutter_runner",
-			"skaven_gutter_runner"
-		},
-		{
-			"skaven_gutter_runner",
-			"skaven_gutter_runner",
-			"critter_pig",
-			"critter_pig"
-		},
-		{
-			"critter_rat",
-			"critter_rat",
-			"critter_rat"
-		}
-	}
-}
-PatrolFormationSettings.one_chaos_warrior = {
-	settings = PatrolFormationSettings.default_sneaking_settings,
-	normal = {
-		{
-			"skaven_gutter_runner"
-		}
-	},
-	hard = {
-		{
+			"skaven_gutter_runner_decoy",
 			"skaven_gutter_runner"
 		}
 	},
 	harder = {
 		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
 			"skaven_gutter_runner"
 		}
 	},
 	hardest = {
 		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
 			"skaven_gutter_runner"
 		}
 	}
@@ -585,6 +1485,378 @@ PatrolFormationSettings.double_dragon = {
 		{
 			"skaven_gutter_runner",
 			"skaven_gutter_runner"
+		}
+	}
+}
+PatrolFormationSettings.one_chaos_warrior = {
+	settings = PatrolFormationSettings.default_sneaking_settings,
+	normal = {
+		{
+			"skaven_gutter_runner"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner"
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner"
+		}
+	}
+}
+PatrolFormationSettings.chaos_warrior_small = {
+	settings = PatrolFormationSettings.default_sneaking_settings,
+	normal = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"chaos_warrior"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		}
+	}
+}
+PatrolFormationSettings.chaos_warrior_long = {
+	settings = PatrolFormationSettings.default_sneaking_settings,
+	normal = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	}
+}
+PatrolFormationSettings.chaos_warrior_wide = {
+	settings = PatrolFormationSettings.default_sneaking_settings,
+	normal = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hard = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	harder = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		}
+	},
+	hardest = {
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner"
+		},
+		{
+			"skaven_gutter_runner",
+			"skaven_gutter_runner",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
+		},
+		{
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy",
+			"skaven_gutter_runner_decoy"
 		}
 	}
 }
