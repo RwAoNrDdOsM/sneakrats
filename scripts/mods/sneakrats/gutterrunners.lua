@@ -1,19 +1,18 @@
 local mod = get_mod("sneakrats")
 mod:dofile("scripts/mods/sneakrats/misc/bt_selector_gutter_runner_decoy")
 
+
 -- Spawn Decoys when Gutter Runner Vanishes
---mod:dofile("scripts/mods/sneakrats/misc/ai_heroic_enemy_extension")
---[[mod:dofile("scripts/mods/sneakrats/misc/ai_heroic_enemy_extension_quickfix")
-mod:decoy()]]
+mod:dofile("scripts/mods/sneakrats/misc/ai_heroic_enemy_extension")
+--local AiHeroicEnemyExtension = AiHeroicEnemyExtension:new()
+mod:dofile("scripts/mods/sneakrats/misc/unit_templates")
+mod:hook_safe(EntitySystem, "_init_systems", function (self, entity_system_creation_context)
+	self:_add_system("ai_heroic_enemy_system", ExtensionSystemBase, entity_system_creation_context, {
+		"AiHeroicEnemyExtension"
+	})
+end)
 
---[[EntitySystem:_add_system("ai_heroic_enemy_system", ExtensionSystemBase, entity_system_creation_context, {
-	"AiHeroicEnemyExtension"
-})]]
---[[mod:hook_origin(BTNinjaVanishAction, "vanish", function (unit, blackboard)
-	--local heroic_extension = ScriptUnit.extension(unit, "ai_heroic_enemy_system")
-	--heroic_extension:respawn_decoys()
-	mod:respawn_decoys(unit)
-
+mod:hook_origin(BTNinjaVanishAction, "vanish", function (unit, blackboard)
 	local vanish_pos = blackboard.vanish_pos:unbox()
 
 	if script_data.debug_ai_movement then
@@ -36,7 +35,11 @@ mod:decoy()]]
 	local ping_system = Managers.state.entity:system("ping_system")
 
 	ping_system:remove_ping_from_unit(unit)
-end)]]
+
+	local heroic_extension = ScriptUnit.extension(unit, "ai_heroic_enemy_system")
+	heroic_extension:respawn_decoys()
+	--AiHeroicEnemyExtension:respawn_decoys()
+end)
 
 -- Gutter Runner Actions
 BreedActions.skaven_gutter_runner.circle_prey_decoy = {
@@ -264,5 +267,5 @@ Breeds.skaven_gutter_runner.patrol_passive_target_selection = "pick_ninja_approa
 
 -- Decoy Network Lookup
 
-NetworkLookup.breeds.skaven_gutter_runner_decoy = [#NetworkLookup.breeds + 1]
+NetworkLookup.breeds.skaven_gutter_runner_decoy = #NetworkLookup.breeds + 1
 NetworkLookup.breeds[#NetworkLookup.breeds + 1] = "skaven_gutter_runner_decoy"
